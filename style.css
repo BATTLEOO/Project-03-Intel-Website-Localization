@@ -861,3 +861,55 @@ html[dir="rtl"] .btn-arrow.ms-2 {
 .btn-arrow.ms-2 {
   margin-left: 8px;
 }
+
+/* Bootstrap accordion component */
+.accordion-section {
+  background: #07111d;
+}
+
+.custom-accordion {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 199, 253, 0.18);
+}
+
+.custom-accordion .accordion-item {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.custom-accordion .accordion-button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+  background: linear-gradient(135deg, rgba(0, 104, 181, 0.95), rgba(0, 199, 253, 0.45));
+  color: #ffffff;
+}
+
+.custom-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 199, 253, 0.25);
+}
+
+.custom-accordion .accordion-body {
+  color: #cfe7f5;
+}
+
+html[dir="rtl"] .custom-accordion .accordion-button {
+  text-align: right;
+}
+
+html[dir="rtl"] .custom-accordion .accordion-button::after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .custom-accordion .bi {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
