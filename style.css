@@ -1,0 +1,437 @@
+/* ============================================================
+   Intel Sustainability Timeline — style.css
+   Chip / circuit-board aesthetic inspired by Intel silicon
+   ============================================================ */
+
+:root {
+  --intel-blue:    #0068B5;
+  --intel-bright:  #00C7FD;
+  --bg:            #04080f;
+  --bg-card:       #080f1e;
+  --bg-overlay:    rgba(2, 8, 22, 0.93);
+  --text:          #d8eeff;
+  --text-muted:    #5a8aac;
+  --border:        rgba(0, 104, 181, 0.28);
+
+  --card-w:    260px;
+  --card-h:    390px;
+  --img-h:     190px;
+  --stem-h:    44px;
+  --dot-d:     16px;
+
+  --line-top: calc(64px + var(--card-h) + var(--stem-h) + calc(var(--dot-d) / 2));
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── Base body: dark silicon wafer + circuit trace tile ── */
+body {
+  background-color: var(--bg);
+
+  /* Repeating PCB circuit-trace pattern */
+  background-image:
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='none'/><line x1='0' y1='50' x2='110' y2='50' stroke='%230068B5' stroke-width='1.5' opacity='0.35'/><line x1='70' y1='120' x2='160' y2='120' stroke='%230068B5' stroke-width='1.5' opacity='0.30'/><line x1='110' y1='0' x2='110' y2='50' stroke='%230068B5' stroke-width='1.5' opacity='0.35'/><line x1='110' y1='50' x2='110' y2='160' stroke='%2300C7FD' stroke-width='1' opacity='0.20'/><line x1='40' y1='50' x2='40' y2='160' stroke='%230068B5' stroke-width='1' opacity='0.22'/><line x1='70' y1='0' x2='70' y2='120' stroke='%2300C7FD' stroke-width='1' opacity='0.18'/><line x1='0' y1='90' x2='40' y2='90' stroke='%2300C7FD' stroke-width='1' opacity='0.20'/><line x1='110' y1='90' x2='160' y2='90' stroke='%230068B5' stroke-width='1' opacity='0.22'/><polyline points='0,20 25,20 25,50' fill='none' stroke='%2300C7FD' stroke-width='1' opacity='0.18'/><polyline points='130,0 130,30 160,30' fill='none' stroke='%2300C7FD' stroke-width='1' opacity='0.15'/><polyline points='0,140 40,140 40,160' fill='none' stroke='%230068B5' stroke-width='1' opacity='0.20'/><rect x='107' y='47' width='6' height='6' rx='1' fill='%2300C7FD' opacity='0.55'/><rect x='37' y='47' width='6' height='6' rx='1' fill='%2300C7FD' opacity='0.45'/><rect x='107' y='87' width='6' height='6' rx='1' fill='%230068B5' opacity='0.55'/><rect x='67' y='117' width='6' height='6' rx='1' fill='%230068B5' opacity='0.50'/><rect x='37' y='87' width='6' height='6' rx='1' fill='%2300C7FD' opacity='0.35'/><circle cx='110' cy='0' r='3' fill='%2300C7FD' opacity='0.50'/><circle cx='25' cy='50' r='2' fill='%2300C7FD' opacity='0.45'/><circle cx='130' cy='30' r='2' fill='%2300C7FD' opacity='0.40'/><circle cx='40' cy='140' r='2' fill='%230068B5' opacity='0.45'/><circle cx='70' cy='120' r='3' fill='%230068B5' opacity='0.50'/><rect x='148' y='88' width='8' height='4' rx='1' fill='%2300C7FD' opacity='0.30'/><rect x='148' y='96' width='8' height='4' rx='1' fill='%2300C7FD' opacity='0.30'/><rect x='148' y='104' width='8' height='4' rx='1' fill='%2300C7FD' opacity='0.30'/></svg>");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+
+  color: var(--text);
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ── Header: circuit bg + radial spotlight overlay ── */
+header {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px 100px;
+
+  /* Chip die: dark silicon base + inner spotlight */
+  background-color: #030609;
+  background-image:
+    /* Radial spotlight over the circuit traces */
+    radial-gradient(ellipse 75% 60% at 50% 50%, rgba(10,28,70,0.90) 0%, rgba(3,6,9,0.97) 70%),
+    /* Same circuit tile as body */
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect width='160' height='160' fill='none'/><line x1='0' y1='50' x2='110' y2='50' stroke='%230068B5' stroke-width='1.5' opacity='0.45'/><line x1='70' y1='120' x2='160' y2='120' stroke='%230068B5' stroke-width='1.5' opacity='0.40'/><line x1='110' y1='0' x2='110' y2='50' stroke='%230068B5' stroke-width='1.5' opacity='0.45'/><line x1='110' y1='50' x2='110' y2='160' stroke='%2300C7FD' stroke-width='1' opacity='0.28'/><line x1='40' y1='50' x2='40' y2='160' stroke='%230068B5' stroke-width='1' opacity='0.30'/><line x1='70' y1='0' x2='70' y2='120' stroke='%2300C7FD' stroke-width='1' opacity='0.25'/><line x1='0' y1='90' x2='40' y2='90' stroke='%2300C7FD' stroke-width='1' opacity='0.28'/><line x1='110' y1='90' x2='160' y2='90' stroke='%230068B5' stroke-width='1' opacity='0.30'/><polyline points='0,20 25,20 25,50' fill='none' stroke='%2300C7FD' stroke-width='1' opacity='0.25'/><polyline points='130,0 130,30 160,30' fill='none' stroke='%2300C7FD' stroke-width='1' opacity='0.22'/><polyline points='0,140 40,140 40,160' fill='none' stroke='%230068B5' stroke-width='1' opacity='0.28'/><rect x='107' y='47' width='6' height='6' rx='1' fill='%2300C7FD' opacity='0.70'/><rect x='37' y='47' width='6' height='6' rx='1' fill='%2300C7FD' opacity='0.60'/><rect x='107' y='87' width='6' height='6' rx='1' fill='%230068B5' opacity='0.70'/><rect x='67' y='117' width='6' height='6' rx='1' fill='%230068B5' opacity='0.65'/><rect x='37' y='87' width='6' height='6' rx='1' fill='%2300C7FD' opacity='0.50'/><circle cx='110' cy='0' r='3' fill='%2300C7FD' opacity='0.65'/><circle cx='25' cy='50' r='2' fill='%2300C7FD' opacity='0.60'/><circle cx='130' cy='30' r='2' fill='%2300C7FD' opacity='0.55'/><circle cx='40' cy='140' r='2' fill='%230068B5' opacity='0.60'/><circle cx='70' cy='120' r='3' fill='%230068B5' opacity='0.65'/><rect x='148' y='88' width='8' height='4' rx='1' fill='%2300C7FD' opacity='0.45'/><rect x='148' y='96' width='8' height='4' rx='1' fill='%2300C7FD' opacity='0.45'/><rect x='148' y='104' width='8' height='4' rx='1' fill='%2300C7FD' opacity='0.45'/></svg>");
+  background-repeat: repeat;
+  background-size: auto, 160px 160px;
+}
+
+/* Glowing corner accents — like chip die boundary markings */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    /* Top-left corner trace glow */
+    radial-gradient(circle 200px at 0% 0%,   rgba(0,104,181,0.12) 0%, transparent 70%),
+    /* Top-right corner */
+    radial-gradient(circle 200px at 100% 0%,  rgba(0,199,253,0.10) 0%, transparent 70%),
+    /* Bottom-left corner */
+    radial-gradient(circle 200px at 0% 100%,  rgba(0,199,253,0.08) 0%, transparent 70%),
+    /* Bottom-right corner */
+    radial-gradient(circle 200px at 100% 100%,rgba(0,104,181,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Glowing bottom border */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--intel-blue)   20%,
+    var(--intel-bright) 50%,
+    var(--intel-blue)   80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 20px rgba(0, 199, 253, 0.3);
+}
+
+.logo {
+  width: 100px;
+  margin: 0 auto 48px;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title .line-white {
+  display: block;
+  font-size: clamp(72px, 11vw, 128px);
+  color: #ffffff;
+}
+
+.hero-title .line-blue {
+  display: block;
+  font-size: clamp(72px, 11vw, 128px);
+  color: var(--intel-bright);
+}
+
+header p.hero-sub {
+  max-width: 480px;
+  margin: 0 auto 52px;
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  border: 1px solid rgba(0, 199, 253, 0.25);
+  border-radius: 999px;
+  background: rgba(0, 104, 181, 0.08);
+  backdrop-filter: blur(6px);
+  color: #b8d4ee;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background: rgba(0, 199, 253, 0.12);
+  border-color: rgba(0, 199, 253, 0.55);
+  color: var(--intel-bright);
+  box-shadow: 0 0 20px rgba(0, 199, 253, 0.15);
+}
+
+.scroll-btn .btn-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.scroll-btn:hover .btn-arrow { transform: translateX(5px); }
+
+/* ── Timeline Scroll ── */
+.timeline-scroll {
+  overflow-x: auto;
+  padding: 0 40px 60px;
+  cursor: grab;
+}
+
+.timeline-scroll:active { cursor: grabbing; }
+
+.timeline-scroll::-webkit-scrollbar        { height: 6px; }
+.timeline-scroll::-webkit-scrollbar-track  { background: rgba(0,104,181,0.08); border-radius: 3px; }
+.timeline-scroll::-webkit-scrollbar-thumb  { background: var(--intel-blue); border-radius: 3px; }
+.timeline-scroll::-webkit-scrollbar-thumb:hover { background: var(--intel-bright); }
+
+/* ── Timeline Track ── */
+.timeline-track {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  min-width: max-content;
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+
+/* Glowing axis — like a power bus on a PCB */
+.timeline-axis {
+  position: absolute;
+  top: var(--line-top);
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--intel-blue)   5%,
+    var(--intel-bright) 30%,
+    var(--intel-bright) 70%,
+    var(--intel-blue)   95%,
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(0, 199, 253, 0.45), 0 0 4px rgba(0, 199, 253, 0.8);
+}
+
+/* ── Timeline Item ── */
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--card-w);
+  flex-shrink: 0;
+}
+
+/* Stem: like a trace connecting component to bus */
+.node-stem {
+  width: 2px;
+  height: var(--stem-h);
+  background: linear-gradient(to bottom, rgba(0,104,181,0.2), var(--intel-blue));
+  flex-shrink: 0;
+}
+
+/* Dot: like a via/pad on the bus */
+.node-dot {
+  width: var(--dot-d);
+  height: var(--dot-d);
+  border-radius: 50%;
+  background: var(--intel-bright);
+  border: 3px solid var(--intel-blue);
+  box-shadow: 0 0 0 4px rgba(0,199,253,0.15), 0 0 16px rgba(0,199,253,0.55);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover .node-dot {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 6px rgba(0,199,253,0.20), 0 0 28px rgba(0,199,253,0.90);
+}
+
+/* ── Card: chip package aesthetic ── */
+.card {
+  width: 100%;
+  height: var(--card-h);
+  border-radius: 10px;
+  /* Circuit trace border: slightly brighter at edges */
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.60),
+    inset 0 1px 0 rgba(0, 199, 253, 0.06);
+  transition:
+    transform    0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow   0.35s ease,
+    border-color 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 20px 52px rgba(0,0,0,0.75),
+    0 0 0 1px var(--intel-bright),
+    0 0 24px rgba(0,199,253,0.12);
+  border-color: var(--intel-bright);
+}
+
+/* Small corner tick marks on card — like IC package corner markings */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px;
+  width: 10px; height: 10px;
+  border-top: 1.5px solid rgba(0,199,253,0.35);
+  border-left: 1.5px solid rgba(0,199,253,0.35);
+  z-index: 2;
+  border-radius: 1px;
+  transition: border-color 0.35s ease;
+}
+
+.card:hover::before {
+  border-color: rgba(0,199,253,0.80);
+}
+
+/* ── Card Image ── */
+.card-img {
+  width: 100%;
+  height: var(--img-h);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img img { transform: scale(1.06); }
+
+/* ── Card Body ── */
+.card-body { padding: 18px 20px 0; }
+
+.card-year {
+  display: block;
+  font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--intel-bright) 0%, var(--intel-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+/* ── Card Overlay ── */
+.card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  min-height: 52%;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 199, 253, 0.20);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  transform: translateY(100%);
+  transition: transform 0.40s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card:hover .card-overlay { transform: translateY(0); }
+
+.card-overlay p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #a8ccec;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(0, 104, 181, 0.20);
+  background: linear-gradient(0deg, rgba(0,104,181,0.04) 0%, transparent 100%);
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  header { min-height: auto; padding: 60px 24px 72px; }
+
+  .hero-title .line-white,
+  .hero-title .line-blue { font-size: clamp(52px, 15vw, 80px); }
+
+  .timeline-scroll { overflow-x: visible; padding: 0 20px 40px; cursor: default; }
+
+  .timeline-track {
+    flex-direction: column;
+    align-items: stretch;
+    min-width: unset;
+    gap: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-left: 2px solid var(--intel-blue);
+    margin-left: 16px;
+  }
+
+  .timeline-axis { display: none; }
+
+  .timeline-item {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 36px;
+  }
+
+  .node-dot {
+    flex-shrink: 0;
+    margin-left: -9px;
+    margin-top: 20px;
+    margin-right: 16px;
+  }
+
+  .node-stem { display: none; }
+
+  .card { width: 100%; height: auto; min-height: 340px; }
+  .card-img { height: 180px; }
+
+  .card-overlay {
+    position: static;
+    transform: none;
+    min-height: auto;
+    padding: 16px 20px 20px;
+    backdrop-filter: none;
+    border-top: 1px solid rgba(0,199,253,0.18);
+    background: rgba(0,8,20,0.70);
+  }
+
+  .card-body { padding: 14px 20px 0; }
+  .card-year  { font-size: 40px; }
+}
