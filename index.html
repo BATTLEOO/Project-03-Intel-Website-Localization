@@ -426,370 +426,451 @@
   <!-- Bootstrap JS for accordion component -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    /* ============================================================
-       TRANSLATIONS — all UI text for each supported language
-       ============================================================ */
-    const TRANSLATIONS = {
-      en: {
-        heroLine1:   'Sustainability',
-        heroLine2:   'Through the Ages',
-        heroSub:     "Explore Intel's journey through time — discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.",
-        scrollBtn:   'Scroll to Explore',
-        featLabel:   'Our Focus Areas',
-        featTitle:   'Pillars of Progress',
-        featIntro:   "Intel's RISE strategy is built on three pillars — each backed by measurable 2030 goals and transparent annual reporting.",
-        fc1Title:    'Climate Action',
-        fc1Body:     'Reduce absolute GHG emissions by 10% and achieve net-zero operational emissions by 2040 — targeting Scope 1, 2, and select Scope 3 sources.',
-        fc1Btn:      'Learn More',
-        fc2Title:    'Water Stewardship',
-        fc2Body:     'Restore 100% of global freshwater use and achieve net positive water impact by 2030, focusing on high water-stress regions where operations are concentrated.',
-        fc2Btn:      'Learn More',
-        fc3Title:    'Zero Waste',
-        fc3Body:     'Send zero total waste to landfill from manufacturing and upcycle 90% of non-hazardous waste — extending product lifecycles and driving circular economy principles.',
-        fc3Btn:      'Learn More',
-        subLabel:    'Stay Updated',
-        subTitle:    'Join Our Mission',
-        subBody:     "Get the latest on Intel's sustainability progress, RISE strategy updates, and responsible technology initiatives delivered to your inbox.",
-        subPlaceholder: 'Enter your email address',
-        subBtn:      'Subscribe',
-        footerText:  '© Intel Corporation · Sustainability Journey · Hover over cards to learn more',
-      },
-      es: {
-        heroLine1:   'Sostenibilidad',
-        heroLine2:   'A Través del Tiempo',
-        heroSub:     'Explore el viaje de Intel a través del tiempo, descubriendo cómo nuestro compromiso con la innovación ha dado forma a un futuro más sostenible.',
-        scrollBtn:   'Desplazar para Explorar',
-        featLabel:   'Nuestras Áreas de Enfoque',
-        featTitle:   'Pilares del Progreso',
-        featIntro:   'La estrategia RISE de Intel se basa en tres pilares, cada uno respaldado por objetivos medibles para 2030 e informes anuales transparentes.',
-        fc1Title:    'Acción Climática',
-        fc1Body:     'Reducir las emisiones de GEI en un 10% y lograr emisiones operativas netas cero para 2040, con objetivos de Alcance 1, 2 y Alcance 3 seleccionado.',
-        fc1Btn:      'Más Información',
-        fc2Title:    'Gestión del Agua',
-        fc2Body:     'Restaurar el 100% del uso global de agua dulce y lograr un impacto hídrico neto positivo para 2030, con foco en regiones de alto estrés hídrico.',
-        fc2Btn:      'Más Información',
-        fc3Title:    'Cero Residuos',
-        fc3Body:     'Enviar cero residuos totales a vertederos desde la fabricación y reutilizar el 90% de los residuos no peligrosos, impulsando la economía circular.',
-        fc3Btn:      'Más Información',
-        subLabel:    'Manténgase Informado',
-        subTitle:    'Únase a Nuestra Misión',
-        subBody:     'Reciba las últimas noticias sobre el progreso de sostenibilidad de Intel, actualizaciones de la estrategia RISE e iniciativas de tecnología responsable.',
-        subPlaceholder: 'Ingrese su correo electrónico',
-        subBtn:      'Suscribirse',
-        footerText:  '© Intel Corporation · Viaje de Sostenibilidad · Pase el ratón sobre las tarjetas para más información',
-      },
-      fr: {
-        heroLine1:   'Durabilité',
-        heroLine2:   'À Travers les Âges',
-        heroSub:     "Explorez le parcours d'Intel à travers le temps — découvrant comment notre engagement envers l'innovation a façonné un avenir plus durable.",
-        scrollBtn:   'Faire défiler pour Explorer',
-        featLabel:   'Nos Domaines d\'Action',
-        featTitle:   'Piliers du Progrès',
-        featIntro:   "La stratégie RISE d'Intel repose sur trois piliers, chacun soutenu par des objectifs 2030 mesurables et des rapports annuels transparents.",
-        fc1Title:    'Action Climatique',
-        fc1Body:     'Réduire les émissions absolues de GES de 10 % et atteindre zéro émission nette d\'ici 2040 — ciblant les Scopes 1, 2 et certains Scope 3.',
-        fc1Btn:      'En Savoir Plus',
-        fc2Title:    'Gestion de l\'Eau',
-        fc2Body:     'Restaurer 100 % de l\'utilisation mondiale d\'eau douce et atteindre un impact hydrique net positif d\'ici 2030, en se concentrant sur les régions à fort stress hydrique.',
-        fc2Btn:      'En Savoir Plus',
-        fc3Title:    'Zéro Déchet',
-        fc3Body:     'Envoyer zéro déchet total en décharge depuis la fabrication et valoriser 90 % des déchets non dangereux, en promouvant l\'économie circulaire.',
-        fc3Btn:      'En Savoir Plus',
-        subLabel:    'Restez Informé',
-        subTitle:    'Rejoignez Notre Mission',
-        subBody:     "Recevez les dernières nouvelles sur les progrès de durabilité d'Intel, les mises à jour de la stratégie RISE et les initiatives technologiques responsables.",
-        subPlaceholder: 'Entrez votre adresse e-mail',
-        subBtn:      "S'abonner",
-        footerText:  '© Intel Corporation · Parcours de Durabilité · Survolez les cartes pour en savoir plus',
-      },
-      de: {
-        heroLine1:   'Nachhaltigkeit',
-        heroLine2:   'Durch die Zeit',
-        heroSub:     'Erkunden Sie Intels Reise durch die Zeit und entdecken Sie, wie unser Engagement für Innovation eine nachhaltigere Zukunft für Technologie und unseren Planeten geprägt hat.',
-        scrollBtn:   'Scrollen zum Erkunden',
-        featLabel:   'Unsere Schwerpunkte',
-        featTitle:   'Säulen des Fortschritts',
-        featIntro:   'Intels RISE-Strategie basiert auf drei Säulen — jede durch messbare 2030-Ziele und transparente Jahresberichte gestützt.',
-        fc1Title:    'Klimaschutz',
-        fc1Body:     'Absolute THG-Emissionen um 10 % reduzieren und bis 2040 Netto-Null-Betriebsemissionen erreichen — Scope 1, 2 und ausgewählte Scope-3-Quellen.',
-        fc1Btn:      'Mehr Erfahren',
-        fc2Title:    'Wassermanagement',
-        fc2Body:     'Den weltweiten Süßwasserverbrauch zu 100 % wiederherstellen und bis 2030 eine positive Wasserbilanz erreichen, mit Fokus auf wassergestresste Regionen.',
-        fc2Btn:      'Mehr Erfahren',
-        fc3Title:    'Null Abfall',
-        fc3Body:     'Keinen Gesamtabfall aus der Fertigung auf Deponien schicken und 90 % des ungefährlichen Abfalls weiterverwenden — Kreislaufwirtschaft vorantreiben.',
-        fc3Btn:      'Mehr Erfahren',
-        subLabel:    'Bleiben Sie Informiert',
-        subTitle:    'Nehmen Sie an Unserer Mission Teil',
-        subBody:     "Erhalten Sie die neuesten Nachrichten zu Intels Nachhaltigkeitsfortschritten, RISE-Strategie-Updates und verantwortungsvollen Technologieinitiativen.",
-        subPlaceholder: 'Geben Sie Ihre E-Mail-Adresse ein',
-        subBtn:      'Abonnieren',
-        footerText:  '© Intel Corporation · Nachhaltigkeitsreise · Bewegen Sie die Maus über die Karten für mehr Informationen',
-      },
-      ar: {
-        heroLine1:   'الاستدامة',
-        heroLine2:   'عبر العصور',
-        heroSub:     'استكشف رحلة إنتل عبر الزمن — اكتشف كيف شكّل التزامنا بالابتكار مستقبلاً أكثر استدامة للتكنولوجيا وكوكبنا.',
-        scrollBtn:   'اسحب للاستكشاف',
-        featLabel:   'مجالات تركيزنا',
-        featTitle:   'ركائز التقدم',
-        featIntro:   'تقوم استراتيجية RISE لإنتل على ثلاثة ركائز — كل منها مدعوم بأهداف قابلة للقياس لعام 2030 وتقارير سنوية شفافة.',
-        fc1Title:    'العمل المناخي',
-        fc1Body:     'خفض انبعاثات الغازات الدفيئة بنسبة 10% وتحقيق انبعاثات تشغيلية صافية صفرية بحلول 2040 — مستهدفةً النطاقين 1 و2 ومصادر مختارة من النطاق 3.',
-        fc1Btn:      'اعرف المزيد',
-        fc2Title:    'إدارة المياه',
-        fc2Body:     'استعادة 100% من استخدام المياه العذبة العالمية وتحقيق تأثير مائي إيجابي صافٍ بحلول 2030، مع التركيز على مناطق الإجهاد المائي العالي.',
-        fc2Btn:      'اعرف المزيد',
-        fc3Title:    'صفر نفايات',
-        fc3Body:     'عدم إرسال أي نفايات إلى مدافن النفايات من التصنيع وإعادة تدوير 90% من النفايات غير الخطرة — تعزيز مبادئ الاقتصاد الدائري.',
-        fc3Btn:      'اعرف المزيد',
-        subLabel:    'ابقَ على اطلاع',
-        subTitle:    'انضم إلى مهمتنا',
-        subBody:     'احصل على آخر أخبار تقدم إنتل في مجال الاستدامة وتحديثات استراتيجية RISE ومبادرات التكنولوجيا المسؤولة مباشرةً في صندوق بريدك.',
-        subPlaceholder: 'أدخل عنوان بريدك الإلكتروني',
-        subBtn:      'اشترك',
-        footerText:  '© شركة إنتل · رحلة الاستدامة · مرر مؤشر الفأرة فوق البطاقات لمعرفة المزيد',
-      },
-      he: {
-        heroLine1:   'קיימות',
-        heroLine2:   'לאורך הדורות',
-        heroSub:     'חקור את מסע אינטל לאורך הזמן — גלה כיצד מחויבותנו לחדשנות עיצבה עתיד ברוח קיימות לטכנולוגיה ולכוכב הלכת שלנו.',
-        scrollBtn:   'גלול לחקירה',
-        featLabel:   'תחומי ההתמקדות שלנו',
-        featTitle:   'עמודי ההתקדמות',
-        featIntro:   'אסטרטגיית RISE של אינטל בנויה על שלושה עמודים — כל אחד נתמך ביעדים מדידים ל-2030 ודיווח שנתי שקוף.',
-        fc1Title:    'פעולה אקלימית',
-        fc1Body:     'הפחתת פליטות גזי חממה ב-10% והשגת פליטות תפעוליות נטו-אפס עד 2040 — תוך טיפול ב-Scope 1, 2 ומקורות נבחרים מ-Scope 3.',
-        fc1Btn:      'למד עוד',
-        fc2Title:    'ניהול מים',
-        fc2Body:     'שיקום 100% מהשימוש העולמי במי מתוקים והשגת השפעת מים חיובית נטו עד 2030, תוך התמקדות באזורים עם לחץ מימי גבוה.',
-        fc2Btn:      'למד עוד',
-        fc3Title:    'אפס פסולת',
-        fc3Body:     'אפס פסולת כוללת מהייצור לאתרי הטמנה ומחזור 90% מהפסולת הלא מסוכנת — קידום עקרונות הכלכלה המעגלית.',
-        fc3Btn:      'למד עוד',
-        subLabel:    'הישאר מעודכן',
-        subTitle:    'הצטרף למשימה שלנו',
-        subBody:     'קבל את העדכונים האחרונים על התקדמות הקיימות של אינטל, עדכוני אסטרטגיית RISE ויוזמות טכנולוגיה אחראית ישירות לתיבת הדואר שלך.',
-        subPlaceholder: 'הזן את כתובת הדוא"ל שלך',
-        subBtn:      'הירשם',
-        footerText:  '© אינטל קורפוריישן · מסע הקיימות · העבר את העכבר מעל הכרטיסים לפרטים נוספים',
-      },
-      ja: {
-        heroLine1:   'サステナビリティ',
-        heroLine2:   '時代を超えて',
-        heroSub:     'インテルの歴史を振り返り、技術革新へのコミットメントがどのように持続可能な未来を形作ってきたかを探ってください。',
-        scrollBtn:   'スクロールして探索',
-        featLabel:   '重点分野',
-        featTitle:   '進歩の柱',
-        featIntro:   'インテルのRISE戦略は3つの柱で構成されています。それぞれが測定可能な2030年目標と透明な年次報告によって支えられています。',
-        fc1Title:    '気候変動対策',
-        fc1Body:     '2040年までにGHG排出量を10%削減し、事業活動でのネットゼロ排出を達成します。スコープ1、2、および特定のスコープ3を対象とします。',
-        fc1Btn:      '詳細を見る',
-        fc2Title:    '水の管理',
-        fc2Body:     '2030年までに世界全体の淡水使用量の100%を回復し、水資源のプラスの影響を達成します。水ストレスの高い地域に重点を置きます。',
-        fc2Btn:      '詳細を見る',
-        fc3Title:    'ゼロウェイスト',
-        fc3Body:     '製造からのすべての廃棄物を埋立地に送らず、非危険性廃棄物の90%をアップサイクルします。サーキュラーエコノミーの原則を推進します。',
-        fc3Btn:      '詳細を見る',
-        subLabel:    '最新情報を受け取る',
-        subTitle:    '私たちのミッションに参加',
-        subBody:     'インテルのサステナビリティの進捗、RISE戦略の更新、責任ある技術イニシアチブに関する最新情報をメールボックスにお届けします。',
-        subPlaceholder: 'メールアドレスを入力してください',
-        subBtn:      '購読する',
-        footerText:  '© インテル株式会社 · サステナビリティの旅 · カードにカーソルを合わせると詳細が表示されます',
-      },
-    };
+<script>
+  const RTL_LANGUAGES = ['ar', 'he', 'ur', 'fa', 'yi', 'ji', 'iw', 'ku'];
 
-    /* ============================================================
-       RTL Languages list
-       ============================================================ */
-    const RTL_LANGUAGES = ['ar', 'he', 'ur', 'fa', 'yi', 'ji', 'iw', 'ku'];
+  const TRANSLATIONS = {
+    en: {
+      heroLine1: 'Sustainability',
+      heroLine2: 'Through the Ages',
+      heroSub: "Explore Intel's journey through time — discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.",
+      scrollBtn: 'Scroll to Explore',
 
-    function isRTLLanguage(lang) {
-      return RTL_LANGUAGES.includes(lang.split('-')[0].toLowerCase());
+      timeline1Title: 'Intel Founded',
+      timeline1Text: 'Robert Noyce and Gordon Moore rename NM Electronics to Intel Corporation, laying the foundation for decades of technological innovation.',
+      timeline2Title: 'First Microprocessor',
+      timeline2Text: "Intel debuts the 4004, the world's first commercial microprocessor, igniting the revolution and propelling the future of computing devices.",
+      timeline3Title: '8086 Processor',
+      timeline3Text: 'Launch of the 8086, establishing the x86 architecture that drives countless PCs and servers in the modern era.',
+      timeline4Title: '386 Processor',
+      timeline4Text: 'Intel introduces the 386 with 32-bit architecture, ushering in a new era of performance and multitasking for personal computers.',
+      timeline5Title: 'Peak GHG Emissions',
+      timeline5Text: "Intel's highest annual greenhouse gas emissions. The company then invests heavily in abatement, renewables, and efficient manufacturing to reverse this trend.",
+      timeline6Title: 'RISE Strategy',
+      timeline6Text: 'Intel launches its RISE strategy and 2030 goals, driving progress on climate action and waste reduction.',
+      timeline7Title: 'Net-Zero By 2040',
+      timeline7Text: 'Intel commits to net-zero greenhouse gas emissions across global operations by 2040.',
+      timeline8Title: 'Renewable Electricity',
+      timeline8Text: 'Intel achieves 99% renewable electricity usage worldwide, supporting its long-term sustainability goals.',
+      timeline9Title: 'Sustainability Summit',
+      timeline9Text: 'Intel hosts its first Sustainability Summit, bringing together suppliers, government officials, and industry leaders.',
+
+      featLabel: 'Our Focus Areas',
+      featTitle: 'Pillars of Progress',
+      featIntro: "Intel's RISE strategy is built on three pillars — each backed by measurable 2030 goals and transparent annual reporting.",
+      fc1Title: 'Climate Action',
+      fc1Body: 'Reduce absolute GHG emissions by 10% and achieve net-zero operational emissions by 2040 — targeting Scope 1, 2, and select Scope 3 sources.',
+      fc2Title: 'Water Stewardship',
+      fc2Body: 'Restore 100% of global freshwater use and achieve net positive water impact by 2030, focusing on high water-stress regions where operations are concentrated.',
+      fc3Title: 'Zero Waste',
+      fc3Body: 'Send zero total waste to landfill from manufacturing and upcycle 90% of non-hazardous waste — extending product lifecycles and driving circular economy principles.',
+      learnMore: 'Learn More',
+
+      accordionLabel: 'Explore More',
+      accordionTitle: 'Sustainability Questions',
+      accordionIntro: "Use this accordion to quickly learn more about Intel's sustainability goals without leaving the page.",
+      acc1Q: 'Why does sustainability matter in technology?',
+      acc1A: 'Technology companies use energy, water, and materials, so sustainability helps reduce environmental impact while still supporting innovation.',
+      acc2Q: 'What is water stewardship?',
+      acc2A: 'Water stewardship means using water responsibly and supporting projects that restore water to communities and ecosystems.',
+      acc3Q: 'How does zero waste help?',
+      acc3A: 'Zero waste helps reduce landfill impact by reusing, recycling, and upcycling materials instead of throwing them away.',
+
+      subLabel: 'Stay Updated',
+      subTitle: 'Join Our Mission',
+      subBody: "Get the latest on Intel's sustainability progress, RISE strategy updates, and responsible technology initiatives delivered to your inbox.",
+      subPlaceholder: 'Enter your email address',
+      subBtn: 'Subscribe',
+
+      footerText: '© Intel Corporation · Sustainability Journey · Hover over cards to learn more'
+    },
+
+    es: {
+      heroLine1: 'Sostenibilidad',
+      heroLine2: 'A Través del Tiempo',
+      heroSub: 'Explora el viaje de Intel a través del tiempo y descubre cómo la innovación ayuda a crear un futuro más sostenible para la tecnología y el planeta.',
+      scrollBtn: 'Desplazar para Explorar',
+
+      timeline1Title: 'Fundación de Intel',
+      timeline1Text: 'Robert Noyce y Gordon Moore cambian el nombre de NM Electronics a Intel Corporation, creando la base para décadas de innovación tecnológica.',
+      timeline2Title: 'Primer Microprocesador',
+      timeline2Text: 'Intel presenta el 4004, el primer microprocesador comercial del mundo, impulsando el futuro de los dispositivos informáticos.',
+      timeline3Title: 'Procesador 8086',
+      timeline3Text: 'Lanzamiento del 8086, que establece la arquitectura x86 utilizada por muchas computadoras y servidores modernos.',
+      timeline4Title: 'Procesador 386',
+      timeline4Text: 'Intel presenta el 386 con arquitectura de 32 bits, abriendo una nueva era de rendimiento y multitarea.',
+      timeline5Title: 'Máximas Emisiones de GEI',
+      timeline5Text: 'Intel alcanza sus emisiones anuales más altas de gases de efecto invernadero y luego invierte en reducción, energías renovables y fabricación eficiente.',
+      timeline6Title: 'Estrategia RISE',
+      timeline6Text: 'Intel lanza su estrategia RISE y sus objetivos para 2030, impulsando la acción climática y la reducción de residuos.',
+      timeline7Title: 'Cero Neto para 2040',
+      timeline7Text: 'Intel se compromete a alcanzar emisiones netas cero en sus operaciones globales para 2040.',
+      timeline8Title: 'Electricidad Renovable',
+      timeline8Text: 'Intel alcanza un 99% de uso de electricidad renovable a nivel mundial.',
+      timeline9Title: 'Cumbre de Sostenibilidad',
+      timeline9Text: 'Intel organiza su primera Cumbre de Sostenibilidad, reuniendo a proveedores, funcionarios y líderes de la industria.',
+
+      featLabel: 'Nuestras Áreas de Enfoque',
+      featTitle: 'Pilares del Progreso',
+      featIntro: 'La estrategia RISE de Intel se basa en tres pilares, cada uno respaldado por objetivos medibles para 2030 e informes transparentes.',
+      fc1Title: 'Acción Climática',
+      fc1Body: 'Reducir las emisiones de GEI y lograr emisiones operativas netas cero para 2040.',
+      fc2Title: 'Gestión del Agua',
+      fc2Body: 'Restaurar el uso global de agua dulce y lograr un impacto hídrico positivo para 2030.',
+      fc3Title: 'Cero Residuos',
+      fc3Body: 'Enviar cero residuos a vertederos desde la fabricación e impulsar la economía circular.',
+      learnMore: 'Más Información',
+
+      accordionLabel: 'Explorar Más',
+      accordionTitle: 'Preguntas de Sostenibilidad',
+      accordionIntro: 'Usa este acordeón para aprender rápidamente sobre los objetivos de sostenibilidad de Intel.',
+      acc1Q: '¿Por qué importa la sostenibilidad en la tecnología?',
+      acc1A: 'Las empresas tecnológicas usan energía, agua y materiales, por eso la sostenibilidad ayuda a reducir el impacto ambiental.',
+      acc2Q: '¿Qué es la gestión del agua?',
+      acc2A: 'Significa usar el agua responsablemente y apoyar proyectos que restauran agua en comunidades y ecosistemas.',
+      acc3Q: '¿Cómo ayuda el cero residuo?',
+      acc3A: 'Ayuda a reducir el impacto de los vertederos mediante reutilización, reciclaje y upcycling.',
+
+      subLabel: 'Mantente Informado',
+      subTitle: 'Únete a Nuestra Misión',
+      subBody: 'Recibe las últimas noticias sobre sostenibilidad, estrategia RISE e iniciativas responsables de Intel.',
+      subPlaceholder: 'Ingresa tu correo electrónico',
+      subBtn: 'Suscribirse',
+
+      footerText: '© Intel Corporation · Viaje de Sostenibilidad · Pasa el cursor sobre las tarjetas para saber más'
+    },
+
+    ar: {
+      heroLine1: 'الاستدامة',
+      heroLine2: 'عبر العصور',
+      heroSub: 'استكشف رحلة إنتل عبر الزمن واكتشف كيف ساعد الابتكار في تشكيل مستقبل أكثر استدامة للتكنولوجيا وكوكبنا.',
+      scrollBtn: 'اسحب للاستكشاف',
+
+      timeline1Title: 'تأسيس إنتل',
+      timeline1Text: 'قام روبرت نويس وغوردون مور بتغيير اسم NM Electronics إلى Intel Corporation، مما وضع الأساس لعقود من الابتكار التقني.',
+      timeline2Title: 'أول معالج دقيق',
+      timeline2Text: 'قدمت إنتل معالج 4004، أول معالج دقيق تجاري في العالم، مما ساعد في إطلاق ثورة الحوسبة.',
+      timeline3Title: 'معالج 8086',
+      timeline3Text: 'إطلاق معالج 8086 الذي أسس بنية x86 المستخدمة في العديد من الحواسيب والخوادم الحديثة.',
+      timeline4Title: 'معالج 386',
+      timeline4Text: 'قدمت إنتل معالج 386 ببنية 32 بت، مما فتح عصراً جديداً من الأداء وتعدد المهام.',
+      timeline5Title: 'ذروة انبعاثات الغازات',
+      timeline5Text: 'سجلت إنتل أعلى انبعاثات سنوية للغازات الدفيئة، ثم بدأت الاستثمار في تقليل الانبعاثات والطاقة المتجددة والتصنيع الفعال.',
+      timeline6Title: 'استراتيجية RISE',
+      timeline6Text: 'أطلقت إنتل استراتيجية RISE وأهداف 2030 لدعم العمل المناخي وتقليل النفايات.',
+      timeline7Title: 'صافي صفر بحلول 2040',
+      timeline7Text: 'تلتزم إنتل بتحقيق صافي انبعاثات صفري في عملياتها العالمية بحلول عام 2040.',
+      timeline8Title: 'الكهرباء المتجددة',
+      timeline8Text: 'حققت إنتل استخداماً عالمياً للكهرباء المتجددة بنسبة 99%.',
+      timeline9Title: 'قمة الاستدامة',
+      timeline9Text: 'استضافت إنتل أول قمة للاستدامة جمعت الموردين والمسؤولين وقادة الصناعة.',
+
+      featLabel: 'مجالات تركيزنا',
+      featTitle: 'ركائز التقدم',
+      featIntro: 'تقوم استراتيجية RISE لإنتل على ثلاثة ركائز، وكل ركيزة مدعومة بأهداف قابلة للقياس لعام 2030 وتقارير شفافة.',
+      fc1Title: 'العمل المناخي',
+      fc1Body: 'خفض انبعاثات الغازات الدفيئة وتحقيق صافي انبعاثات تشغيلية صفري بحلول عام 2040.',
+      fc2Title: 'إدارة المياه',
+      fc2Body: 'استعادة استخدام المياه العذبة عالمياً وتحقيق تأثير مائي إيجابي بحلول عام 2030.',
+      fc3Title: 'صفر نفايات',
+      fc3Body: 'عدم إرسال النفايات إلى مدافن النفايات من التصنيع ودعم الاقتصاد الدائري.',
+      learnMore: 'اعرف المزيد',
+
+      accordionLabel: 'اكتشف المزيد',
+      accordionTitle: 'أسئلة حول الاستدامة',
+      accordionIntro: 'استخدم هذا القسم لمعرفة المزيد بسرعة عن أهداف الاستدامة لدى إنتل.',
+      acc1Q: 'لماذا تهم الاستدامة في التكنولوجيا؟',
+      acc1A: 'تستخدم شركات التكنولوجيا الطاقة والمياه والمواد، لذلك تساعد الاستدامة في تقليل الأثر البيئي.',
+      acc2Q: 'ما هي إدارة المياه؟',
+      acc2A: 'تعني استخدام المياه بشكل مسؤول ودعم مشاريع تعيد المياه إلى المجتمعات والأنظمة البيئية.',
+      acc3Q: 'كيف يساعد صفر النفايات؟',
+      acc3A: 'يساعد في تقليل أثر مدافن النفايات من خلال إعادة الاستخدام والتدوير.',
+
+      subLabel: 'ابقَ على اطلاع',
+      subTitle: 'انضم إلى مهمتنا',
+      subBody: 'احصل على آخر أخبار استدامة إنتل وتحديثات استراتيجية RISE ومبادرات التكنولوجيا المسؤولة.',
+      subPlaceholder: 'أدخل بريدك الإلكتروني',
+      subBtn: 'اشترك',
+
+      footerText: '© شركة إنتل · رحلة الاستدامة · مرر فوق البطاقات لمعرفة المزيد'
+    },
+
+    he: {
+      heroLine1: 'קיימות',
+      heroLine2: 'לאורך הדורות',
+      heroSub: 'גלו את המסע של אינטל לאורך הזמן וכיצד חדשנות עוזרת ליצור עתיד טכנולוגי בר־קיימא יותר.',
+      scrollBtn: 'גלול לחקירה',
+
+      timeline1Title: 'אינטל נוסדה',
+      timeline1Text: 'רוברט נויס וגורדון מור משנים את שם החברה ל-Intel Corporation ומניחים בסיס לעשרות שנים של חדשנות טכנולוגית.',
+      timeline2Title: 'המיקרו־מעבד הראשון',
+      timeline2Text: 'אינטל מציגה את 4004, המיקרו־מעבד המסחרי הראשון בעולם, שמקדם את מהפכת המחשוב.',
+      timeline3Title: 'מעבד 8086',
+      timeline3Text: 'השקת 8086, שהקימה את ארכיטקטורת x86 המפעילה מחשבים ושרתים רבים.',
+      timeline4Title: 'מעבד 386',
+      timeline4Text: 'אינטל מציגה את 386 עם ארכיטקטורת 32 ביט, ופותחת עידן חדש של ביצועים וריבוי משימות.',
+      timeline5Title: 'שיא פליטות גזי חממה',
+      timeline5Text: 'אינטל מגיעה לשיא פליטות שנתי ואז משקיעה בהפחתה, אנרגיה מתחדשת וייצור יעיל.',
+      timeline6Title: 'אסטרטגיית RISE',
+      timeline6Text: 'אינטל משיקה את אסטרטגיית RISE ואת יעדי 2030 לקידום פעולה אקלימית והפחתת פסולת.',
+      timeline7Title: 'אפס נטו עד 2040',
+      timeline7Text: 'אינטל מתחייבת להגיע לאפס פליטות נטו בפעילות הגלובלית שלה עד 2040.',
+      timeline8Title: 'חשמל מתחדש',
+      timeline8Text: 'אינטל מגיעה לשימוש של 99% בחשמל מתחדש ברחבי העולם.',
+      timeline9Title: 'פסגת קיימות',
+      timeline9Text: 'אינטל מארחת את פסגת הקיימות הראשונה שלה עם ספקים, גורמים ממשלתיים ומובילי תעשייה.',
+
+      featLabel: 'תחומי המיקוד שלנו',
+      featTitle: 'עמודי ההתקדמות',
+      featIntro: 'אסטרטגיית RISE של אינטל בנויה על שלושה עמודים, כל אחד נתמך ביעדים מדידים ודיווח שקוף.',
+      fc1Title: 'פעולה אקלימית',
+      fc1Body: 'הפחתת פליטות גזי חממה והשגת אפס פליטות תפעוליות נטו עד 2040.',
+      fc2Title: 'ניהול מים',
+      fc2Body: 'שיקום השימוש העולמי במים מתוקים והשגת השפעת מים חיובית עד 2030.',
+      fc3Title: 'אפס פסולת',
+      fc3Body: 'מניעת שליחת פסולת מהייצור להטמנה וקידום כלכלה מעגלית.',
+      learnMore: 'למידע נוסף',
+
+      accordionLabel: 'גלו עוד',
+      accordionTitle: 'שאלות על קיימות',
+      accordionIntro: 'השתמשו באקורדיון כדי ללמוד במהירות על יעדי הקיימות של אינטל.',
+      acc1Q: 'למה קיימות חשובה בטכנולוגיה?',
+      acc1A: 'חברות טכנולוגיה משתמשות באנרגיה, מים וחומרים, ולכן קיימות עוזרת להפחית השפעה סביבתית.',
+      acc2Q: 'מהו ניהול מים?',
+      acc2A: 'ניהול מים פירושו שימוש אחראי במים ותמיכה בפרויקטים שמחזירים מים לקהילות ולמערכות אקולוגיות.',
+      acc3Q: 'איך אפס פסולת עוזר?',
+      acc3A: 'אפס פסולת עוזר להפחית הטמנה באמצעות שימוש חוזר ומיחזור.',
+
+      subLabel: 'הישארו מעודכנים',
+      subTitle: 'הצטרפו למשימה שלנו',
+      subBody: 'קבלו עדכונים על התקדמות הקיימות של אינטל, אסטרטגיית RISE ויוזמות טכנולוגיה אחראית.',
+      subPlaceholder: 'הזן את כתובת הדוא״ל שלך',
+      subBtn: 'הירשם',
+
+      footerText: '© Intel Corporation · מסע קיימות · העבר את העכבר מעל הכרטיסים כדי ללמוד עוד'
     }
+  };
 
-    function getUserLanguage() {
-      try {
-        const saved = localStorage.getItem('user-language');
-        if (saved) return saved;
-      } catch(e) {}
-      return navigator.language || navigator.userLanguage || 'en';
+  function setText(id, value) {
+    const element = document.getElementById(id);
+    if (element && value) {
+      element.textContent = value;
     }
+  }
 
-    /* ============================================================
-       updatePageContent — swap all text strings for the given lang
-       ============================================================ */
-    function updatePageContent(lang) {
-      const t = TRANSLATIONS[lang] || TRANSLATIONS['en'];
+  function setPlaceholder(id, value) {
+    const element = document.getElementById(id);
+    if (element && value) {
+      element.placeholder = value;
+    }
+  }
 
-      function setText(id, val) {
-        const el = document.getElementById(id);
-        if (el) el.textContent = val;
+  function getUserLanguage() {
+    const browserLanguage = navigator.language || navigator.userLanguage || 'en';
+    const baseBrowserLanguage = browserLanguage.split('-')[0].toLowerCase();
+
+    try {
+      const savedLanguage = localStorage.getItem('user-language');
+      if (savedLanguage && TRANSLATIONS[savedLanguage]) {
+        return savedLanguage;
       }
-      function setPlaceholder(id, val) {
-        const el = document.getElementById(id);
-        if (el) el.placeholder = val;
+    } catch (error) {
+      console.log('Local storage is not available.');
+    }
+
+    return TRANSLATIONS[baseBrowserLanguage] ? baseBrowserLanguage : 'en';
+  }
+
+  function applyLanguage(language) {
+    const baseLanguage = language.split('-')[0].toLowerCase();
+    const selectedLanguage = TRANSLATIONS[baseLanguage] ? baseLanguage : 'en';
+    const text = TRANSLATIONS[selectedLanguage];
+    const isRTL = RTL_LANGUAGES.includes(selectedLanguage);
+
+    document.documentElement.lang = selectedLanguage;
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+
+    /* Hero */
+    setText('hero-line1', text.heroLine1);
+    setText('hero-line2', text.heroLine2);
+    setText('hero-sub', text.heroSub);
+    setText('scroll-btn-text', text.scrollBtn);
+
+    /* Timeline cards: find the existing cards by order, so you do NOT need to add IDs manually */
+    const timelineTitles = [
+      text.timeline1Title,
+      text.timeline2Title,
+      text.timeline3Title,
+      text.timeline4Title,
+      text.timeline5Title,
+      text.timeline6Title,
+      text.timeline7Title,
+      text.timeline8Title,
+      text.timeline9Title
+    ];
+
+    const timelineTexts = [
+      text.timeline1Text,
+      text.timeline2Text,
+      text.timeline3Text,
+      text.timeline4Text,
+      text.timeline5Text,
+      text.timeline6Text,
+      text.timeline7Text,
+      text.timeline8Text,
+      text.timeline9Text
+    ];
+
+    document.querySelectorAll('.timeline-item .card').forEach(function(card, index) {
+      const title = card.querySelector('.card-title, h3, h2');
+      const overlayText = card.querySelector('.card-overlay p');
+
+      if (title && timelineTitles[index]) {
+        title.textContent = timelineTitles[index];
       }
 
-      /* ── Hero ── */
-      setText('hero-line1',  t.heroLine1);
-      setText('hero-line2',  t.heroLine2);
-      setText('hero-sub',    t.heroSub);
-      setText('scroll-btn-text', t.scrollBtn);
-
-      /* ── Feature section ── */
-      setText('feat-label',  t.featLabel);
-      setText('feat-title',  t.featTitle);
-      setText('feat-intro',  t.featIntro);
-      setText('fc1-title',   t.fc1Title);
-      setText('fc1-body',    t.fc1Body);
-      setText('fc1-btn-text', t.fc1Btn);
-      setText('fc2-title',   t.fc2Title);
-      setText('fc2-body',    t.fc2Body);
-      setText('fc2-btn-text', t.fc2Btn);
-      setText('fc3-title',   t.fc3Title);
-      setText('fc3-body',    t.fc3Body);
-      setText('fc3-btn-text', t.fc3Btn);
-
-      /* ── Subscribe section ── */
-      setText('sub-label',  t.subLabel);
-      setText('sub-title',  t.subTitle);
-      setText('sub-body',   t.subBody);
-      setPlaceholder('sub-email', t.subPlaceholder);
-      setText('sub-btn-text', t.subBtn);
-
-      /* ── Footer ── */
-      setText('footer-text', t.footerText);
-
-      /* ── Feature card h3 elements need icon preserved ──
-         Re-set them with the icon span + translated text */
-      const iconMap = { 'fc1-title': '🌍', 'fc2-title': '💧', 'fc3-title': '♻️' };
-      const titleMap = { 'fc1-title': t.fc1Title, 'fc2-title': t.fc2Title, 'fc3-title': t.fc3Title };
-      Object.keys(iconMap).forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.innerHTML = `<span class="feature-icon" aria-hidden="true">${iconMap[id]}</span>${titleMap[id]}`;
-        }
-      });
-    }
-
-    /* ============================================================
-       applyLanguage — set dir/lang AND update content
-       ============================================================ */
-    function applyLanguage(lang) {
-      const base = lang.split('-')[0].toLowerCase();
-      const resolvedLang = TRANSLATIONS[base] ? base : 'en';
-      const html = document.documentElement;
-      const rtl  = isRTLLanguage(resolvedLang);
-
-      html.lang = resolvedLang;
-      html.dir  = rtl ? 'rtl' : 'ltr';
-
-      /* Reposition language selector for RTL */
-      const selector = document.getElementById('rtl-lang-selector');
-      if (selector) {
-        selector.style.right = rtl ? 'auto' : '20px';
-        selector.style.left  = rtl ? '20px' : 'auto';
+      if (overlayText && timelineTexts[index]) {
+        overlayText.textContent = timelineTexts[index];
       }
-
-      updatePageContent(resolvedLang);
-
-      try { localStorage.setItem('user-language', resolvedLang); } catch(e) {}
-      window.dispatchEvent(new CustomEvent('languageChanged', {
-        detail: { language: resolvedLang, direction: rtl ? 'rtl' : 'ltr' }
-      }));
-      console.log(`Page direction: ${html.dir} | Language: ${resolvedLang}`);
-    }
-
-    /* ============================================================
-       Language Selector UI
-       ============================================================ */
-    function createLanguageSelector() {
-      const wrap = document.createElement('div');
-      wrap.id = 'rtl-lang-selector';
-      wrap.style.cssText = `
-        position: fixed; top: 20px; right: 20px; z-index: 9999;
-        background: rgba(0,104,181,0.95);
-        border: 1px solid rgba(0,199,253,0.3);
-        border-radius: 8px; padding: 12px 16px;
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-size: 12px; letter-spacing: 0.5px;
-        display: flex; align-items: center; gap: 8px;
-      `;
-
-      const lbl = document.createElement('label');
-      lbl.htmlFor = 'rtl-lang-select';
-      lbl.style.cssText = 'color:#d8eeff; white-space:nowrap;';
-      lbl.textContent = 'Language:';
-
-      const sel = document.createElement('select');
-      sel.id = 'rtl-lang-select';
-      sel.style.cssText = `
-        background:rgba(4,12,24,0.8); color:#d8eeff;
-        border:1px solid rgba(0,199,253,0.4); border-radius:4px;
-        padding:6px 8px; font-family:inherit; font-size:11px; cursor:pointer;
-      `;
-
-      const languages = [
-        { code:'en', name:'English (LTR)' },
-        { code:'es', name:'Español (LTR)' },
-        { code:'fr', name:'Français (LTR)' },
-        { code:'de', name:'Deutsch (LTR)' },
-        { code:'ja', name:'日本語 (LTR)' },
-        { code:'ar', name:'العربية (RTL)' },
-        { code:'he', name:'עברית (RTL)' },
-      ];
-
-      languages.forEach(l => {
-        const opt = document.createElement('option');
-        opt.value = l.code;
-        opt.textContent = l.name;
-        sel.appendChild(opt);
-      });
-
-      sel.addEventListener('change', e => applyLanguage(e.target.value));
-
-      wrap.appendChild(lbl);
-      wrap.appendChild(sel);
-      document.body.appendChild(wrap);
-
-      /* Set dropdown to current language after appending */
-      const cur = (getUserLanguage().split('-')[0]).toLowerCase();
-      sel.value = languages.find(l => l.code === cur) ? cur : 'en';
-    }
-
-    /* ============================================================
-       Initialize
-       ============================================================ */
-    document.addEventListener('DOMContentLoaded', () => {
-      createLanguageSelector();               /* build selector first */
-      const lang = getUserLanguage();
-      applyLanguage(lang);                    /* then apply language  */
     });
 
-    /* ============================================================
-       Timeline Drag-to-Scroll
-       ============================================================ */
-    const slider = document.querySelector('.timeline-scroll');
-    let isDown = false, startX = 0;
+    /* Feature section */
+    setText('feat-label', text.featLabel);
+    setText('feat-title', text.featTitle);
+    setText('feat-intro', text.featIntro);
 
-    slider.addEventListener('mousedown', e => {
+    function setFeatureTitle(id, icon, titleText) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.innerHTML = '<span class="feature-icon" aria-hidden="true">' + icon + '</span>' + titleText;
+      }
+    }
+
+    setFeatureTitle('fc1-title', '🌍', text.fc1Title);
+    setFeatureTitle('fc2-title', '💧', text.fc2Title);
+    setFeatureTitle('fc3-title', '♻️', text.fc3Title);
+
+    setText('fc1-body', text.fc1Body);
+    setText('fc2-body', text.fc2Body);
+    setText('fc3-body', text.fc3Body);
+
+    setText('fc1-btn-text', text.learnMore);
+    setText('fc2-btn-text', text.learnMore);
+    setText('fc3-btn-text', text.learnMore);
+
+    /* Accordion section headings: your HTML did not have IDs here, so this uses class selectors */
+    const accordionLabel = document.querySelector('.accordion-section .section-label');
+    const accordionTitle = document.querySelector('.accordion-section .section-title');
+    const accordionIntro = document.querySelector('.accordion-section .section-intro');
+
+    if (accordionLabel) accordionLabel.textContent = text.accordionLabel;
+    if (accordionTitle) accordionTitle.textContent = text.accordionTitle;
+    if (accordionIntro) accordionIntro.textContent = text.accordionIntro;
+
+    /* Accordion questions and answers */
+    const accordionButtons = document.querySelectorAll('.custom-accordion .accordion-button');
+    const accordionBodies = document.querySelectorAll('.custom-accordion .accordion-body');
+
+    const accordionQuestions = [text.acc1Q, text.acc2Q, text.acc3Q];
+    const accordionAnswers = [text.acc1A, text.acc2A, text.acc3A];
+    const accordionIcons = [
+      '<i class="bi bi-globe-americas me-2" aria-hidden="true"></i>',
+      '<i class="bi bi-droplet me-2" aria-hidden="true"></i>',
+      '<i class="bi bi-recycle me-2" aria-hidden="true"></i>'
+    ];
+
+    accordionButtons.forEach(function(button, index) {
+      if (accordionQuestions[index]) {
+        button.innerHTML = accordionIcons[index] + '<span>' + accordionQuestions[index] + '</span>';
+      }
+    });
+
+    accordionBodies.forEach(function(body, index) {
+      if (accordionAnswers[index]) {
+        body.textContent = accordionAnswers[index];
+      }
+    });
+
+    /* Subscribe section */
+    setText('sub-label', text.subLabel);
+    setText('sub-title', text.subTitle);
+    setText('sub-body', text.subBody);
+    setPlaceholder('sub-email', text.subPlaceholder);
+    setText('sub-btn-text', text.subBtn);
+
+    /* Footer */
+    setText('footer-text', text.footerText);
+
+    try {
+      localStorage.setItem('user-language', selectedLanguage);
+    } catch (error) {
+      console.log('Could not save language.');
+    }
+
+    const select = document.getElementById('rtl-lang-select');
+    if (select) {
+      select.value = selectedLanguage;
+    }
+  }
+
+  function createLanguageSelector() {
+    const selectorBox = document.createElement('div');
+    selectorBox.className = 'language-selector';
+
+    selectorBox.innerHTML = `
+      <label for="rtl-lang-select">Language</label>
+      <select id="rtl-lang-select">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+        <option value="he">עברית</option>
+      </select>
+    `;
+
+    document.body.appendChild(selectorBox);
+
+    document.getElementById('rtl-lang-select').addEventListener('change', function () {
+      applyLanguage(this.value);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    createLanguageSelector();
+    applyLanguage(getUserLanguage());
+  });
+
+  const slider = document.querySelector('.timeline-scroll');
+  let isDown = false;
+  let startX = 0;
+
+  if (slider) {
+    slider.addEventListener('mousedown', function (e) {
       isDown = true;
       startX = e.pageX - slider.offsetLeft;
       slider.style.cursor = 'grabbing';
     });
-    slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
-    slider.addEventListener('mouseup',    () => { isDown = false; slider.style.cursor = 'grab'; });
-    slider.addEventListener('mousemove',  e => {
+
+    slider.addEventListener('mouseleave', function () {
+      isDown = false;
+      slider.style.cursor = 'grab';
+    });
+
+    slider.addEventListener('mouseup', function () {
+      isDown = false;
+      slider.style.cursor = 'grab';
+    });
+
+    slider.addEventListener('mousemove', function (e) {
       if (!isDown) return;
       e.preventDefault();
-      const x    = e.pageX - slider.offsetLeft;
+
+      const x = e.pageX - slider.offsetLeft;
       const walk = (x - startX) * 1.5;
+
       slider.scrollBy({ left: -walk });
       startX = x;
     });
-  </script>
+  }
+</script>
 </body>
 </html>
