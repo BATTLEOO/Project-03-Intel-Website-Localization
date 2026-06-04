@@ -336,13 +336,17 @@
             <p class="subscribe-text mb-4" id="sub-body">
               Get the latest on Intel&#x27;s sustainability progress, RISE strategy updates, and responsible technology initiatives delivered to your inbox.
             </p>
-            <form class="subscribe-form" onsubmit="return false;">
+            <!-- Styled subscription form -->
+            <form class="subscribe-form" id="subscribe-form">
               <input class="subscribe-input" type="email" id="sub-email"
-                     placeholder="Enter your email address" aria-label="Email address" />
+                     placeholder="Enter your email address" aria-label="Email address" required />
               <button class="subscribe-btn" type="submit" id="sub-btn">
                 <span id="sub-btn-text">Subscribe</span>
               </button>
             </form>
+            <p class="subscribe-note" id="subscribe-note">
+              No spam — just updates about sustainability, innovation, and responsible technology.
+            </p>
           </div>
 
         </div>
@@ -350,8 +354,10 @@
     </div>
   </section>
 
-  <footer>
+  <!-- Simple footer -->
+  <footer class="site-footer">
     <p id="footer-text">&#xa9; Intel Corporation &nbsp;&#xb7;&nbsp; Sustainability Journey &nbsp;&#xb7;&nbsp; Hover over cards to learn more</p>
+    <p class="footer-subtext">Created as a responsive localization project.</p>
   </footer>
 
   <script>
@@ -529,6 +535,91 @@
       },
     };
 
+
+
+    /* ============================================================
+       Timeline translations — card titles and descriptions
+       ============================================================ */
+    const TIMELINE_TRANSLATIONS = {
+      en: [
+        { title: 'Intel Founded', body: 'Robert Noyce and Gordon Moore rename NM Electronics to Intel Corporation, laying the foundation for decades of technological innovation.' },
+        { title: 'First Microprocessor', body: "Intel debuts the 4004, the world\'s first commercial microprocessor, igniting the revolution and propelling the future of computing devices." },
+        { title: '8086 Processor', body: 'Launch of the 8086, establishing the x86 architecture that drives countless PCs and servers in the modern era.' },
+        { title: '386 Processor', body: 'Intel introduces the 386 with 32-bit architecture, ushering in a new era of performance and multitasking for personal computers.' },
+        { title: 'Peak GHG Emissions', body: "Intel\'s highest annual greenhouse gas emissions. The company then invests heavily in abatement, renewables, and efficient manufacturing to reverse this trend." },
+        { title: 'RISE Strategy', body: 'Intel launches its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy and 2030 goals, driving progress on climate action and waste reduction.' },
+        { title: 'Net-Zero By 2040', body: 'Intel commits to net-zero greenhouse gas emissions (Scope 1 and 2) across all global operations by 2040, building on years of environmental action.' },
+        { title: 'Renewable Electricity', body: 'Intel achieves 99% renewable electricity usage worldwide, drastically lowering carbon emissions and advancing its long-term sustainability goals.' },
+        { title: 'Sustainability Summit', body: 'Intel hosts its first Sustainability Summit, uniting suppliers, government officials, and industry leaders to collaborate on next-generation sustainable manufacturing.' }
+      ],
+      es: [
+        { title: 'Fundación de Intel', body: 'Robert Noyce y Gordon Moore renombran NM Electronics como Intel Corporation, sentando las bases para décadas de innovación tecnológica.' },
+        { title: 'Primer microprocesador', body: 'Intel presenta el 4004, el primer microprocesador comercial del mundo, iniciando una revolución en los dispositivos de cómputo.' },
+        { title: 'Procesador 8086', body: 'Lanzamiento del 8086, que establece la arquitectura x86 que impulsa innumerables PC y servidores modernos.' },
+        { title: 'Procesador 386', body: 'Intel introduce el 386 con arquitectura de 32 bits, abriendo una nueva era de rendimiento y multitarea para las computadoras personales.' },
+        { title: 'Máximo de emisiones de GEI', body: 'Intel alcanza sus mayores emisiones anuales de gases de efecto invernadero y luego invierte en reducción, energías renovables y fabricación eficiente.' },
+        { title: 'Estrategia RISE', body: 'Intel lanza su estrategia RISE y sus metas para 2030, impulsando avances en acción climática y reducción de residuos.' },
+        { title: 'Cero neto para 2040', body: 'Intel se compromete a lograr emisiones netas cero de gases de efecto invernadero en sus operaciones globales para 2040.' },
+        { title: 'Electricidad renovable', body: 'Intel alcanza un 99% de uso de electricidad renovable en todo el mundo, reduciendo sus emisiones de carbono.' },
+        { title: 'Cumbre de sostenibilidad', body: 'Intel organiza su primera Cumbre de Sostenibilidad, reuniendo a proveedores, funcionarios y líderes de la industria.' }
+      ],
+      fr: [
+        { title: 'Fondation d’Intel', body: 'Robert Noyce et Gordon Moore renomment NM Electronics en Intel Corporation, posant les bases de décennies d’innovation technologique.' },
+        { title: 'Premier microprocesseur', body: 'Intel lance le 4004, le premier microprocesseur commercial au monde, déclenchant une révolution informatique.' },
+        { title: 'Processeur 8086', body: 'Lancement du 8086, qui établit l’architecture x86 utilisée par de nombreux PC et serveurs modernes.' },
+        { title: 'Processeur 386', body: 'Intel présente le 386 avec une architecture 32 bits, ouvrant une nouvelle ère de performance et de multitâche.' },
+        { title: 'Pic des émissions de GES', body: 'Intel atteint son plus haut niveau annuel d’émissions de gaz à effet de serre, puis investit dans la réduction, les renouvelables et la fabrication efficace.' },
+        { title: 'Stratégie RISE', body: 'Intel lance sa stratégie RISE et ses objectifs 2030, faisant progresser l’action climatique et la réduction des déchets.' },
+        { title: 'Zéro émission nette d’ici 2040', body: 'Intel s’engage à atteindre zéro émission nette de gaz à effet de serre dans ses opérations mondiales d’ici 2040.' },
+        { title: 'Électricité renouvelable', body: 'Intel atteint 99 % d’électricité renouvelable dans le monde, réduisant fortement ses émissions de carbone.' },
+        { title: 'Sommet de la durabilité', body: 'Intel organise son premier Sommet de la durabilité, réunissant fournisseurs, représentants publics et leaders industriels.' }
+      ],
+      de: [
+        { title: 'Intel gegründet', body: 'Robert Noyce und Gordon Moore benennen NM Electronics in Intel Corporation um und legen die Grundlage für Jahrzehnte technologischer Innovation.' },
+        { title: 'Erster Mikroprozessor', body: 'Intel stellt den 4004 vor, den ersten kommerziellen Mikroprozessor der Welt, und startet eine Revolution im Computing.' },
+        { title: '8086-Prozessor', body: 'Einführung des 8086, der die x86-Architektur etabliert, die viele moderne PCs und Server antreibt.' },
+        { title: '386-Prozessor', body: 'Intel führt den 386 mit 32-Bit-Architektur ein und eröffnet eine neue Ära von Leistung und Multitasking.' },
+        { title: 'Höchste THG-Emissionen', body: 'Intel erreicht seine höchsten jährlichen Treibhausgasemissionen und investiert danach stark in Minderung, erneuerbare Energien und effiziente Fertigung.' },
+        { title: 'RISE-Strategie', body: 'Intel startet seine RISE-Strategie und Ziele für 2030, um Klimaschutz und Abfallreduzierung voranzutreiben.' },
+        { title: 'Netto-Null bis 2040', body: 'Intel verpflichtet sich, bis 2040 Netto-Null-Treibhausgasemissionen in seinen weltweiten Betrieben zu erreichen.' },
+        { title: 'Erneuerbarer Strom', body: 'Intel erreicht weltweit 99 % Nutzung erneuerbarer Elektrizität und senkt damit seine Kohlenstoffemissionen deutlich.' },
+        { title: 'Nachhaltigkeitsgipfel', body: 'Intel veranstaltet seinen ersten Nachhaltigkeitsgipfel mit Lieferanten, Regierungsvertretern und Branchenführern.' }
+      ],
+      ja: [
+        { title: 'インテル設立', body: 'ロバート・ノイスとゴードン・ムーアがNM ElectronicsをIntel Corporationに改名し、長年の技術革新の基礎を築きました。' },
+        { title: '初のマイクロプロセッサ', body: 'インテルは世界初の商用マイクロプロセッサ4004を発表し、コンピューティングデバイスの未来を切り開きました。' },
+        { title: '8086プロセッサ', body: '8086の登場により、現在の多くのPCやサーバーを支えるx86アーキテクチャが確立されました。' },
+        { title: '386プロセッサ', body: 'インテルは32ビットアーキテクチャの386を発表し、パーソナルコンピューターの性能とマルチタスクに新時代をもたらしました。' },
+        { title: 'GHG排出量のピーク', body: 'インテルの年間温室効果ガス排出量が最大となり、その後、削減、再生可能エネルギー、効率的な製造へ大きく投資しました。' },
+        { title: 'RISE戦略', body: 'インテルはRISE戦略と2030年目標を開始し、気候変動対策と廃棄物削減を推進しました。' },
+        { title: '2040年までにネットゼロ', body: 'インテルは2040年までに世界中の事業活動で温室効果ガス排出ネットゼロを達成することを約束しました。' },
+        { title: '再生可能電力', body: 'インテルは世界全体で99%の再生可能電力利用を達成し、炭素排出量を大きく削減しました。' },
+        { title: 'サステナビリティ・サミット', body: 'インテルは初のサステナビリティ・サミットを開催し、サプライヤー、政府関係者、業界リーダーを結集しました。' }
+      ],
+      ar: [
+        { title: 'تأسيس إنتل', body: 'قام روبرت نويس وغوردون مور بتغيير اسم NM Electronics إلى Intel Corporation، واضعين أساس عقود من الابتكار التقني.' },
+        { title: 'أول معالج دقيق', body: 'قدّمت إنتل معالج 4004، أول معالج دقيق تجاري في العالم، مما أطلق ثورة في أجهزة الحوسبة.' },
+        { title: 'معالج 8086', body: 'إطلاق 8086 الذي أسس معمارية x86 التي تشغّل عدداً كبيراً من الحواسيب والخوادم الحديثة.' },
+        { title: 'معالج 386', body: 'قدّمت إنتل معالج 386 بمعمارية 32 بت، فاتحةً عصراً جديداً من الأداء وتعدد المهام.' },
+        { title: 'ذروة انبعاثات الغازات الدفيئة', body: 'بلغت إنتل أعلى مستوى سنوي لانبعاثات الغازات الدفيئة، ثم استثمرت في الخفض والطاقة المتجددة والتصنيع الفعال.' },
+        { title: 'استراتيجية RISE', body: 'أطلقت إنتل استراتيجية RISE وأهداف 2030 لدفع التقدم في العمل المناخي وتقليل النفايات.' },
+        { title: 'صافي صفر بحلول 2040', body: 'التزمت إنتل بتحقيق صافي صفر لانبعاثات الغازات الدفيئة في عملياتها العالمية بحلول عام 2040.' },
+        { title: 'الكهرباء المتجددة', body: 'حققت إنتل استخداماً بنسبة 99% للكهرباء المتجددة عالمياً، مما خفّض انبعاثات الكربون بشكل كبير.' },
+        { title: 'قمة الاستدامة', body: 'استضافت إنتل أول قمة للاستدامة، جامعةً الموردين والمسؤولين الحكوميين وقادة الصناعة.' }
+      ],
+      he: [
+        { title: 'הקמת אינטל', body: 'רוברט נויס וגורדון מור משנים את שם NM Electronics ל-Intel Corporation ומניחים בסיס לעשורים של חדשנות טכנולוגית.' },
+        { title: 'המיקרו-מעבד הראשון', body: 'אינטל מציגה את 4004, המיקרו-מעבד המסחרי הראשון בעולם, ומתחילה מהפכה במחשוב.' },
+        { title: 'מעבד 8086', body: 'השקת 8086, שקבע את ארכיטקטורת x86 המפעילה מחשבים ושרתים מודרניים רבים.' },
+        { title: 'מעבד 386', body: 'אינטל מציגה את 386 עם ארכיטקטורת 32 ביט, ופותחת עידן חדש של ביצועים וריבוי משימות.' },
+        { title: 'שיא פליטות גזי חממה', body: 'אינטל מגיעה לרמת הפליטות השנתית הגבוהה ביותר שלה, ואז משקיעה בצמצום, באנרגיות מתחדשות ובייצור יעיל.' },
+        { title: 'אסטרטגיית RISE', body: 'אינטל משיקה את אסטרטגיית RISE ואת יעדי 2030, לקידום פעולה אקלימית וצמצום פסולת.' },
+        { title: 'נטו אפס עד 2040', body: 'אינטל מתחייבת להגיע לפליטות גזי חממה נטו-אפס בפעילות הגלובלית שלה עד 2040.' },
+        { title: 'חשמל מתחדש', body: 'אינטל מגיעה ל-99% שימוש בחשמל ממקורות מתחדשים ברחבי העולם ומפחיתה משמעותית פליטות פחמן.' },
+        { title: 'פסגת קיימות', body: 'אינטל מארחת את פסגת הקיימות הראשונה שלה, עם ספקים, נציגי ממשלה ומנהיגי תעשייה.' }
+      ]
+    };
+
     /* ============================================================
        RTL Languages list
        ============================================================ */
@@ -590,6 +681,18 @@
 
       /* ── Footer ── */
       setText('footer-text', t.footerText);
+
+      /* ── Timeline cards ── */
+      const timelineCards = TIMELINE_TRANSLATIONS[lang] || TIMELINE_TRANSLATIONS['en'];
+      document.querySelectorAll('.timeline-item').forEach((item, index) => {
+        const cardText = timelineCards[index];
+        if (!cardText) return;
+        const title = item.querySelector('h3');
+        const body = item.querySelector('p');
+        if (title) title.textContent = cardText.title;
+        if (body) body.textContent = cardText.body;
+      });
+
 
       /* ── Feature card h3 elements need icon preserved ──
          Re-set them with the icon span + translated text */
@@ -695,6 +798,23 @@
       createLanguageSelector();               /* build selector first */
       const lang = getUserLanguage();
       applyLanguage(lang);                    /* then apply language  */
+    });
+
+
+    /* ============================================================
+       Simple Subscribe Form Interaction
+       ============================================================ */
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('subscribe-form');
+      const note = document.getElementById('subscribe-note');
+
+      if (form && note) {
+        form.addEventListener('submit', event => {
+          event.preventDefault();
+          note.textContent = 'Thank you for subscribing!';
+          form.reset();
+        });
+      }
     });
 
     /* ============================================================
